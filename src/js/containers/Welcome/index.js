@@ -29,7 +29,13 @@ export default enhance(props => (
     </Row>
     <Row>
       <Col sm={{ size: 'auto', offset: 1 }}>
-        <Button color="primary" disabled={!props.user}>Start Game</Button>
+        <Button
+          color="primary"
+          disabled={!props.user}
+          onClick={() => props.history.push('/game')}
+        >
+          Start Game
+        </Button>
       </Col>
     </Row>
   </Container>

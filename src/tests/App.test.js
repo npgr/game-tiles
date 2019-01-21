@@ -5,6 +5,7 @@ import { expect } from 'chai';
 import App from '../js/containers/App';
 import AppNotifications from '../js/containers/AppNotifications';
 import Welcome from '../js/containers/Welcome';
+import Game from '../js/containers/Game';
 import store from '../store';
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -28,6 +29,14 @@ describe('<Welcome />', () => {
   let component = null;
   it('renders 1 <Welcome /> container', () => {
     component = shallow(<Welcome store={store} />);
+    expect(component).to.have.length(1);
+  });
+});
+
+describe('<Game />', () => {
+  let component = null;
+  it('renders 1 <Game /> container', () => {
+    component = shallow(<Game store={store} />);
     expect(component).to.have.length(1);
   });
 });
