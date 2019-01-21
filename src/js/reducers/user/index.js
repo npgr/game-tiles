@@ -2,7 +2,7 @@ import { SET_USER, SET_STEP } from '../../actions/user';
 
 const defaultState = {
   user: '',
-  step: 1
+  steps: 1
 };
 
 export default (state = defaultState, { type, payload }) => {
@@ -15,7 +15,7 @@ export default (state = defaultState, { type, payload }) => {
     case SET_STEP:
       return {
         ...state,
-        step: payload
+        steps: payload
       };
     default:
       return state;

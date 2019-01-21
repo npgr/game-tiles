@@ -8,6 +8,7 @@ import Welcome from '../js/containers/Welcome'
 import Game from '../js/containers/Game'
 import Stats from '../js/containers/Stats'
 import Header from '../js/components/Header'
+import StatsTable from '../js/components/StatsTable'
 import store from '../store'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -59,4 +60,12 @@ describe('<Stats />', () => {
     expect(component).to.have.length(1);
   });
 });
+
+// describe('<StatsTable />', () => {
+//   let component = null;
+//   it('renders 1 <StatsTable /> component', () => {
+//     component = shallow(<StatsTable stats={store.stats} />);
+//     expect(component).to.have.length(1);
+//   });
+// });
 

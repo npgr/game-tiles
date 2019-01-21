@@ -3,17 +3,18 @@ import { connect } from 'react-redux'
 import { compose, withHandlers } from 'recompose';
 import { Container, Row, Col, Button } from 'reactstrap'
 import { setStep } from '../../actions/user'
+import { addStats } from '../../actions/stats'
 //import { Container } from './styles'
 
-const mapStateToProps = ({ user: { step } }) => ({ step })
-const mapDispatchToProps = { setStep }
+const mapStateToProps = ({ user: { user, steps } }) => ({ user, steps })
+const mapDispatchToProps = { setStep, addStats }
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withHandlers({
-    incrementStep: ({ setStep, step }) => () => setStep(step + 1),
-    endGame: ({ history }) => () => {
-      //Update stats
+    incrementStep: ({ steps, setStep }) => () => setStep(steps + 1),
+    endGame: ({ user, steps, history, addStats }) => () => {
+      addStats({ user, steps, new: true })
       history.push('/stats')
     }
   })
@@ -24,7 +25,7 @@ const Tiles = () => <div>Tiles</div>
 export default enhance(props => (
   <Container>
     <Row>
-      <Col>Step <span>{props.step}</span></Col>
+      <Col>Step <span>{props.steps}</span></Col>
     </Row>
     <Tiles />
     <Row>

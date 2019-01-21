@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { compose, withHandlers } from 'recompose';
 import { Container, Row, Col, Button } from 'reactstrap'
 import { setStep } from '../../actions/user'
+import StatsTable from '../../components/StatsTable'
 //import { Container } from './styles'
 
 const mapStateToProps = ({ stats }) => ({ stats })
@@ -18,12 +19,12 @@ const enhance = compose(
   })
 );
 
-const StatsTable = () => <div>Stats Table</div>
+//const StatsTable = () => <div>Stats Table</div>
 
 export default enhance(props => (
   <Container>
     <Row>
-      <StatsTable />
+      <StatsTable stats={props.stats}/>
     </Row>
     <Row>
       <Col sm={{ size: 'auto', offset: 1 }}>
