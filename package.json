@@ -1,0 +1,64 @@
+{
+  "name": "game-tiles",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "history": "^4.7.2",
+    "lodash.clonedeep": "^4.5.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "react-scripts": "1.1.4",
+    "reactstrap": "^6.3.0",
+    "redux": "^4.0.0",
+    "redux-devtools-extension": "^2.13.5",
+    "redux-promise-middleware": "^5.1.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "test:staged": "set CI=true && npm test",
+    "eject": "react-scripts eject",
+    "precommit": "npm run test:staged && lint-staged",
+    "precommit2": "set CI=true && npm test && npm run eslint",
+    "eslint": "eslint src/* --ext .js,.jsx --cache",
+    "stylelint": "stylelint src/style/main.css"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint-plugin-jest": "^21.18.0",
+    "husky": "^0.14.3",
+    "jest": "^23.4.1",
+    "lint-staged": "^7.2.0",
+    "react-addons-test-utils": "^15.6.2",
+    "stylelint": "^9.4.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint",
+      "git add"
+    ]
+  },
+  "xhusky": {
+    "hooks": {
+      "pre-commit": "babel-node resources/git/precommit.js && npm test"
+    }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3031",
+      "ws": true
+    }
+  }
+}
