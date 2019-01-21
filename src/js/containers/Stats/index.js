@@ -5,38 +5,36 @@ import { Container, Row, Col, Button } from 'reactstrap'
 import { setStep } from '../../actions/user'
 //import { Container } from './styles'
 
-const mapStateToProps = ({ user: { step } }) => ({ step })
+const mapStateToProps = ({ stats }) => ({ stats })
 const mapDispatchToProps = { setStep }
 
 const enhance = compose(
   connect(mapStateToProps, mapDispatchToProps),
   withHandlers({
-    incrementStep: ({ setStep, step }) => () => setStep(step + 1),
-    endGame: ({ history }) => () => {
-      //Update stats
-      history.push('/stats')
+    newGame: ({ setStep, history }) => () => {
+      setStep(1)
+      history.push('/game')
     }
   })
 );
 
-const Tiles = () => <div>Tiles</div>
+const StatsTable = () => <div>Stats Table</div>
 
 export default enhance(props => (
   <Container>
     <Row>
-      <Col>Step <span>{props.step}</span></Col>
+      <StatsTable />
     </Row>
-    <Tiles />
     <Row>
       <Col sm={{ size: 'auto', offset: 1 }}>
-        <Button color="primary" onClick={() => props.incrementStep()}>
-          Next Step
+        <Button color="primary" onClick={() => props.newGame()}>
+          New Game
         </Button>
       </Col>
       <Col sm={{ size: 'auto', offset: 1 }}>
-        <Button
-          color="secondary"
-          onClick={props.endGame}>End Game</Button>
+        <Button color="secondary" onClick={() => props.history.push('/end')}>
+          End Game
+        </Button>
       </Col>
     </Row>
   </Container>
