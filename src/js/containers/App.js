@@ -7,7 +7,7 @@ import Welcome from './Welcome'
 import Game from './Game'
 import Stats from './Stats'
 
-const End = () => <h4>End Game, have a nice day !!!</h4>
+const End = () => <h4 style={{margin:'30px'}}>End Game, have a nice day !!!</h4>
 const notFoundPage = () => <div>Not Found Page</div>
 
 class App extends Component {

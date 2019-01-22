@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { compose } from 'recompose';
-import { Container, Row, Col } from 'reactstrap'
+import { Container, Row as RowStrap, Col } from 'reactstrap'
 import Tiles from '../../components/Tiles'
+import styled from 'styled-components'
+
+const Row = styled(RowStrap)`
+  margin-top: 10px;
+`
 
 const mapStateToProps = ({ user: { steps } }) => ({ steps })
 
@@ -13,7 +18,9 @@ const enhance = compose(
 export default enhance(props => (
   <Container>
     <Row>
-      <Col>Step <span>{props.steps}</span></Col>
+      <Col>
+        <strong>Step <span>{props.steps}</span></strong>
+      </Col>
     </Row>
     <Row>
       <Col sm={{ size: 'auto', offset: 1 }}>

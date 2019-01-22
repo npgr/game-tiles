@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { compose, withHandlers } from 'recompose';
-import { Container, Row, Col, Button } from 'reactstrap'
+import { Container, Row as RowStrap, Col, Button } from 'reactstrap'
 import { setUser } from '../../actions/user'
-//import { Container } from './styles'
+import styled from 'styled-components'
 
 const mapStateToProps = ({ user: { user } }) => ({ user })
 const mapDispatchToProps = { setUser }
@@ -15,11 +15,15 @@ const enhance = compose(
   })
 );
 
+const Row = styled(RowStrap)`
+  margin-top: 20px;
+`
+
 export default enhance(props => (
   <Container>
     <Row>
       <Col sm={{ size: 'auto', offset: 1 }}>
-        Welcome to Game of Tiles, please type your name or alias to start Game
+        Welcome to Game of Tiles, please type your name or alias to start
       </Col>
     </Row>
     <Row>

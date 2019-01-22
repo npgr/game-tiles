@@ -48,7 +48,6 @@ const enhance = compose(
       randomTiles()
     }
   }),
-
   lifecycle({
     componentDidMount() {
       this.props.randomTiles()
@@ -59,21 +58,23 @@ const enhance = compose(
 const lineBreak = (i, steps) => {
   if (i === 0) return null
   const mod = (i + 1) % (steps + 1)
-  return mod === 0 ? <br /> : null
+  return mod === 0 ? <br key={`${i}br`} /> : null
 }
 
-export default enhance(props => (
-  <TilesContainer>
+const calcSize = (tiles) => Math.round(window.innerHeight * 0.6 / tiles)
+
+export default enhance(props => {
+  return (<TilesContainer>
     {times(totalTiles(props.steps), (i) => (
       [
         <Tile
           key={i}
           color={i !== props.pos ? props.hsl1 : props.hsl2}
-          size={'100px'}
+          size={`${calcSize(props.steps + 1)}px`}
           onClick={i === props.pos ? props.incrementStep : props.endGame}
         />,
         lineBreak(i, props.steps)
       ]
     ))}
-  </TilesContainer>
-));
+  </TilesContainer>)
+});

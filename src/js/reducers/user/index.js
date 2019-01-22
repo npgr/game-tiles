@@ -10,7 +10,8 @@ export default (state = defaultState, { type, payload }) => {
     case SET_USER:
       return {
         ...state,
-        user: payload
+        user: payload,
+        steps: 1
       };
     case SET_STEP:
       return {
