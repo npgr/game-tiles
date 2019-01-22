@@ -1,5 +1,9 @@
 This project was forked from a previuos project named react-project-mgmt https://github.com/npgr/react-project-mgmt which was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## Clone the project
+
+You can clone or download the project, after that you must run 'npm install" to install all the dependencies
+
 ## Available Scripts
 
 In the project directory, you can run:
