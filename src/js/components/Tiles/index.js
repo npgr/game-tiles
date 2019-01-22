@@ -71,8 +71,7 @@ export default enhance(props => (
           color={i !== props.pos ? props.hsl1 : props.hsl2}
           size={'100px'}
           onClick={i === props.pos ? props.incrementStep : props.endGame}
-        />
-        ,
+        />,
         lineBreak(i, props.steps)
       ]
     ))}

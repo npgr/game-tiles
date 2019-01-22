@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import styled from 'styled-components'
 import { compose, withHandlers } from 'recompose';
-import { Container, Row, Col, Button } from 'reactstrap'
+import { Container, Row as RowStrap, Col, Button } from 'reactstrap'
 import { setStep } from '../../actions/user'
 import StatsTable from '../../components/StatsTable'
-//import { Container } from './styles'
 
 const mapStateToProps = ({ stats }) => ({ stats })
 const mapDispatchToProps = { setStep }
@@ -19,12 +19,16 @@ const enhance = compose(
   })
 );
 
-//const StatsTable = () => <div>Stats Table</div>
+const Row = styled(RowStrap)`
+  margin-top: 20px;
+`
 
 export default enhance(props => (
   <Container>
     <Row>
-      <StatsTable stats={props.stats}/>
+      <Col sm={{ size: 'auto', offset: 1 }}>
+        <StatsTable stats={props.stats}/>
+      </Col>
     </Row>
     <Row>
       <Col sm={{ size: 'auto', offset: 1 }}>
